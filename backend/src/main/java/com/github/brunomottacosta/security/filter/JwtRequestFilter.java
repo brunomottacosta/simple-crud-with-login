@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.Instant;
+import java.util.Collections;
 
 @Slf4j
 @Component
@@ -57,7 +58,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
                                         .timestamp(Instant.now())
                                         .status(HttpStatus.UNAUTHORIZED.value())
                                         .error(HttpStatus.UNAUTHORIZED.getReasonPhrase())
-                                        .message(ex.getMessage())
+                                        .message(ex.getLocalizedMessage())
                                         .build()));
                 response.getWriter().flush();
                 response.getWriter().close();

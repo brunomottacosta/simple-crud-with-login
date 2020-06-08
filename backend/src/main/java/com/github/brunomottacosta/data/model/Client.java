@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.Set;
 
@@ -24,14 +25,17 @@ public class Client extends Auditable<String> {
     private Long id;
 
     @NotNull
+    @Pattern(regexp = "^[a-zA-Z0-9\\s]+$")
     @Size(min = 3, max = 100)
     private String name;
 
     @NotNull
+    @Pattern(regexp = "^[0-9]+$", message = "String can only contain 'numbers'")
     @Size(min = 11, max = 11)
     private String document;
 
     @NotNull
+    @Pattern(regexp = "^[0-9]+$")
     @Size(min = 8, max = 8)
     private String cep;
 

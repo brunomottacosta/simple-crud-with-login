@@ -12,7 +12,7 @@ public class ApplicationProperties {
 
     private String defaultTimezone;
     private DefaultLocale defaultLocale = new DefaultLocale();
-    private final CorsConfiguration cors = new CorsConfiguration();
+    private CorsConfiguration cors = new CorsConfiguration();
 
     @Getter
     @Setter

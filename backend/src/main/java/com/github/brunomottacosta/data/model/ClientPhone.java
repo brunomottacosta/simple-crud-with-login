@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 // Lombok
@@ -23,6 +24,7 @@ public class ClientPhone {
     private Long id;
 
     @NotNull
+    @Pattern(regexp = "^[0-9]+$")
     @Size(min = 10, max = 11)
     private String number;
 

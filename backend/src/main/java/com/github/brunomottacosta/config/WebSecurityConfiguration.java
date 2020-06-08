@@ -4,7 +4,9 @@ import com.github.brunomottacosta.security.filter.JwtRequestFilter;
 import com.github.brunomottacosta.security.jwt.JwtAuthenticationEntryPoint;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -34,17 +36,18 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.addFilterBefore(jwtRequestFilter, BasicAuthenticationFilter.class)
                 .csrf().disable()
                 .headers().frameOptions().disable()
-                .and()
+            .and()
                 .authorizeRequests()
                 .antMatchers("/*").permitAll()
                 .antMatchers("/actuator/health").permitAll()
                 .antMatchers("/api/auth").permitAll()
                 .anyRequest().authenticated()
-                .and()
+            .and()
                 .exceptionHandling()
                 .authenticationEntryPoint(authenticationEntryPoint)
-                .and()
+            .and()
                 .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .and().cors();
     }
 }
