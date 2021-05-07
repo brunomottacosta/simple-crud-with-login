@@ -21,7 +21,7 @@
     "react-text-mask": "^5.4.3",
     "superagent": "^5.2.2",
     "superagent-intercept": "^0.1.2",
-    "underscore": "^1.10.2",
+    "underscore": "^1.12.1",
     "yup": "^0.29.1"
   },
   "scripts": {
